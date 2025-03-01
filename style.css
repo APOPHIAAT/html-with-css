@@ -1,48 +1,56 @@
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Define light mode colors */
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --header-color: #333;
+    --border-color: #ddd;
+    --table-header-bg: #4CAF50;
+    --table-row-even-bg: #f2f2f2;
+    --link-color: #4CAF50;
+    --section-bg: #fff;
 }
 
-/* Body and overall background */
+
+
+/* Define dark mode colors */
+[data-theme="dark"] {
+    --background-color: #333;
+    --text-color: #f4f4f4;
+    --header-color: #f4f4f4;
+    --border-color: #555;
+    --table-header-bg: #2d2d2d;
+    --table-row-even-bg: #444;
+    --link-color: #4CAF50;
+    --section-bg: #444;
+}
+
+/* Apply the variables to your existing styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
     padding: 20px;
 }
 
-/* Main container with centered content */
-.container {
-    width: 80%;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-/* Header */
 h2 {
     text-align: center;
-    color: #333;
+    color: var(--header-color);
     font-size: 2.5em;
     margin-bottom: 10px;
 }
 
-/* Paragraph for introduction */
 p {
     text-align: center;
     font-size: 1.2em;
     margin-bottom: 20px;
 }
 
-/* Horizontal rule styling */
 hr {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     margin: 20px 0;
 }
 
-/* Style for the unordered list */
 ul {
     list-style-type: none;
     margin: 20px 0;
@@ -54,31 +62,26 @@ ul li {
     margin-bottom: 10px;
 }
 
-/* Profile section */
 div h4 {
     font-size: 1.5em;
-    color: #2d2d2d;
+    color: var(--header-color);
     margin-bottom: 10px;
 }
 
-/* Profile picture */
 img {
     border-radius: 50%;
-    border: 3px solid #ddd;
+    border: 3px solid var(--border-color);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: block;
     margin: 20px auto;
-
 }
 
-/* Video */
 video {
     display: block;
     margin: 20px auto;
-    border: 2px solid #ddd;
+    border: 2px solid var(--border-color);
 }
 
-/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -88,21 +91,20 @@ table {
 table th, table td {
     padding: 10px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
 }
 
 table th {
-    background-color: #4CAF50;
+    background-color: var(--table-header-bg);
     color: white;
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: var(--table-row-even-bg);
 }
 
-/* Links */
 a {
-    color: #4CAF50;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -110,9 +112,8 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Contact section */
 section {
-    background-color: #fff;
+    background-color: var(--section-bg);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,7 +122,7 @@ section {
 
 section h3 {
     font-size: 1.8em;
-    color: #333;
+    color: var(--header-color);
     margin-bottom: 20px;
 }
 
@@ -134,3 +135,63 @@ section a {
     font-weight: bold;
 }
 
+/* Toggle Switch Styles */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+#toggle-label {
+    margin-left: 10px;
+    font-size: 1em;
+    color: var(--text-color);
+}
