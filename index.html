@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MY PORTOFOLIO WEBSITE</title>
     <link rel="stylesheet" href="./style.css">
-    <!--External CSS File-->
-    <!--Internal CSS-->
 </head>
 <body>
-    
+    <!-- Toggle Switch -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <div class="slider round"></div>
+        </label>
+        <span id="toggle-label">Dark Mode</span>
+    </div>
+
+    <!-- Rest of your HTML content -->
     <H2>ATWIJUKIRE APOPHIA</H2>
-    <!--INSIGHT CSS-->
-    <p Style="color: blue; font-size:20px ">    My name iS ATWIJUKIRE APOPHIA ,I do computer science year 2 semester 2,my hobbies are swimming,reading novels </p>
+    <p Style="color: blue; font-size:20px ">My name is ATWIJUKIRE APOPHIA, I do computer science year 2 semester 2, my hobbies are swimming, reading novels</p>
     <hr>
     <ul> ATWIJUKIRE APOPHIA 
         <li>b23594 ,M23B23 O51</li>
@@ -22,16 +28,13 @@
     <hr>
     <div>
         <h4>PROFILE PICTURE</h4>
-        
         <img src="apple photo.jpg" alt="" width="200px" height="200px">
     </div>
     <div>
         <h4>Swimming video</h4>
         <video width="320" height="240" controls>
             <source src="swimming.mp4" type="video/mp4">
-            
         </video>
-        
     </div>
     <br>
     <hr>
@@ -44,7 +47,6 @@
                 <th>Grade</th>
                 <th>Credit Units</th>
             </tr>
-
         </thead>
         <tbody>
             <tr>
@@ -67,7 +69,7 @@
             </tr>
             <tr>
                 <td>MTH1102</td>
-                <td>Disctrete Maths</td>
+                <td>Discrete Maths</td>
                 <td>61</td>
                 <td>4</td>
             </tr>
@@ -78,20 +80,47 @@
                 <td>3</td>
             </tr>
         </tbody>
-
     </table>
     <a href="https://makeup.uk/">Visit my favorite website here ❤️🏊‍♂️🏊‍♂️</a>
     <p>
         <a href="https://ucu.ac.ug/">Visit UCU Website here</a>
     </p>
-
     <hr>
     <section>
         <h3>Contact Information</h3>
         <p>Email: <a href="mailto:apophiaatwijukire4@gmail.com">Send an Email</a></p>
         <p>Github: <a href="https://github.com/APOPHIAAT">My Github</a></p>
-
     </section>
 
+    <script>
+        const toggleSwitch = document.querySelector('#theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+        const toggleLabel = document.getElementById('toggle-label');
+
+        // Check if dark mode is enabled
+        if (currentTheme === 'dark') {
+            document.body.dataset.theme = 'dark';
+            toggleSwitch.checked = true;
+            toggleLabel.textContent = 'Light Mode';
+        } else {
+            toggleLabel.textContent = 'Dark Mode';
+        }
+
+        // Function to switch themes
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.body.dataset.theme = 'dark';
+                localStorage.setItem('theme', 'dark');
+                toggleLabel.textContent = 'Light Mode';
+            } else {
+                document.body.dataset.theme = 'light';
+                localStorage.setItem('theme', 'light');
+                toggleLabel.textContent = 'Dark Mode';
+            }
+        }
+
+        // Event listener for toggle switch
+        toggleSwitch.addEventListener('change', switchTheme);
+    </script>
 </body>
 </html>
